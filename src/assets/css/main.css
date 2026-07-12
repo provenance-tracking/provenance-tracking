@@ -205,8 +205,22 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
 @media (min-width: 48rem) {
   .site-footer .container { grid-template-columns: 1.2fr 1fr 1fr 1fr; }
 }
-.footer-brand { display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-brand { display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
 .footer-brand p { color: var(--tan); margin: 0; font-size: 0.95rem; }
+.footer-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.35rem;
+  color: var(--foam);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 0.85;
+  transition: color 120ms ease, opacity 120ms ease;
+}
+.footer-social:hover { color: var(--tan); opacity: 1; }
+.footer-social svg { width: 20px; height: 20px; flex: 0 0 auto; }
 .footer-col h3 {
   font-size: 0.8rem;
   letter-spacing: 0.08em;

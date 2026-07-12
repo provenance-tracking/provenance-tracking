@@ -1,9 +1,13 @@
+{% from "partials/icons.njk" import icon %}
 {% set year = page.date | default("now") %}
 <footer class="site-footer" role="contentinfo">
   <div class="container">
     <div class="footer-brand">
       <strong>{{ site.title }}</strong>
       <p>{{ site.description }}</p>
+      <a class="footer-social" href="https://github.com/provenance-tracking" aria-label="GitHub" rel="noopener">
+        {{ icon("github") }}<span>GitHub</span>
+      </a>
     </div>
     {% for s in site.sections %}
       {% set children = collections.bySection[s.slug] or [] %}
