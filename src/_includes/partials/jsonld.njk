@@ -1,0 +1,76 @@
+{% set canonical = site.url + page.url %}
+{% set ogImage = site.url + "/assets/icons/og-image.png" %}
+{% set crumbs = page.url | breadcrumbs %}
+{% if page.url == "/" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "{{ site.url }}/#website",
+      "url": "{{ site.url }}/",
+      "name": "{{ site.title }}",
+      "description": "{{ site.description }}",
+      "inLanguage": "en",
+      "publisher": { "@id": "{{ site.url }}/#org" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ site.url }}/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "{{ site.url }}/#org",
+      "name": "{{ site.title }}",
+      "url": "{{ site.url }}/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ site.url }}/assets/icons/icon-512.png",
+        "width": 512,
+        "height": 512
+      }
+    }
+  ]
+}
+</script>
+{% else %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "headline": {{ title | dump | safe }},
+      "description": {{ (description or site.description) | dump | safe }},
+      "url": "{{ canonical }}",
+      "mainEntityOfPage": "{{ canonical }}",
+      "image": "{{ ogImage }}",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "{{ site.url }}/#website" },
+      "publisher": { "@id": "{{ site.url }}/#org" },
+      "author": { "@id": "{{ site.url }}/#org" },
+      "articleSection": {{ (page.url | section | titleCase) | dump | safe }}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "{{ site.url }}/"
+        }{% for c in crumbs %},
+        {
+          "@type": "ListItem",
+          "position": {{ loop.index + 1 }},
+          "name": {{ (c.label | titleCase) | dump | safe }},
+          "item": "{{ site.url }}{{ c.url }}"
+        }{% endfor %}
+      ]
+    }
+  ]
+}
+</script>
+{% endif %}

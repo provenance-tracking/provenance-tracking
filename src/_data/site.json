@@ -1,0 +1,43 @@
+{
+  "title": "Geospatial Data Lineage & Provenance Tracking",
+  "short": "Provenance Tracking",
+  "description": "Automated origin tracking, transformation audit trails, compliance mapping, and Python pipeline integration for spatial data infrastructure.",
+  "url": "https://www.provenance-tracking.com",
+  "lang": "en",
+  "themeColor": "#2b1d12",
+  "backgroundColor": "#f6efe2",
+  "sections": [
+    {
+      "title": "Geospatial Lineage Fundamentals & Architecture",
+      "short": "Fundamentals",
+      "slug": "geospatial-lineage-fundamentals-architecture",
+      "icon": "compass",
+      "accent": "espresso",
+      "summary": "Architecture, provenance models, transformation logging, scoping rules, stewardship, trust boundaries, compliance framework mapping."
+    },
+    {
+      "title": "Python Automation & Pipeline Integration",
+      "short": "Automation",
+      "slug": "python-automation-pipeline-integration",
+      "icon": "circuit",
+      "accent": "moss",
+      "summary": "Workflow hooks, async logging, hash generation, metadata injection — embedding provenance directly in Python spatial ETL."
+    },
+    {
+      "title": "Storage, Indexing & Query Optimization",
+      "short": "Storage",
+      "slug": "storage-indexing-query-optimization",
+      "icon": "graph",
+      "accent": "terracotta",
+      "summary": "Graph databases, PostGIS schema design, WORM retention, JSON/XML lineage documents, and query patterns for production-scale provenance graphs."
+    },
+    {
+      "title": "Regulatory Compliance & Standards Mapping",
+      "short": "Compliance",
+      "slug": "regulatory-compliance-standards-mapping",
+      "icon": "shield",
+      "accent": "mocha",
+      "summary": "Map GDPR, FISMA, INSPIRE, ISO 19115, and OGC controls to concrete spatial lineage fields — with control-to-field tables and Python validation."
+    }
+  ]
+}

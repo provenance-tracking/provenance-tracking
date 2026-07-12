@@ -1,0 +1,26 @@
+{
+  "name": "provenance-tracking-com",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Geospatial Data Lineage & Provenance Tracking — static site built with Eleventy.",
+  "scripts": {
+    "clean": "rimraf _site",
+    "build": "eleventy",
+    "serve": "eleventy --serve --quiet",
+    "debug": "DEBUG=Eleventy* eleventy",
+    "deploy": "npm run clean && npm run build && wrangler pages deploy _site --project-name=provenance-tracking-com --branch=main --commit-dirty=true",
+    "deploy:preview": "npm run clean && npm run build && wrangler pages deploy _site --project-name=provenance-tracking-com --branch=preview --commit-dirty=true"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "markdown-it": "^14.1.0",
+    "markdown-it-anchor": "^9.2.0",
+    "markdown-it-attrs": "^4.3.1",
+    "markdown-it-task-lists": "^2.1.1",
+    "mermaid": "^11.4.0",
+    "prismjs": "^1.29.0",
+    "rimraf": "^6.0.1",
+    "slugify": "^1.6.6",
+    "wrangler": "^4.83.0"
+  }
+}

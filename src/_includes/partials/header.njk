@@ -1,0 +1,22 @@
+{% from "partials/icons.njk" import icon %}
+{% set currentSection = page.url | section %}
+<header class="site-header" role="banner">
+  <div class="container">
+    <a class="brand" href="/" aria-label="{{ site.title }} home">
+      <span class="brand-mark">{{ icon("logo") }}</span>
+      <span class="brand-text">
+        {{ site.short }}
+        <small>Geospatial Data Lineage</small>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+      {{ icon("menu") }} Menu
+    </button>
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+      <a href="/" {% if page.url == "/" %}aria-current="page"{% endif %}>{{ icon("home") }} Home</a>
+      {% for s in site.sections %}
+        <a href="/{{ s.slug }}/" {% if currentSection == s.slug %}aria-current="page"{% endif %}>{{ icon(s.icon) }} {{ s.short or s.title.split(" & ")[0] }}</a>
+      {% endfor %}
+    </nav>
+  </div>
+</header>

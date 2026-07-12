@@ -1,0 +1,21 @@
+{% set currentSection = page.url | section %}
+{% set siblings = collections.bySection[currentSection] or [] %}
+<aside class="related" aria-label="Related pages">
+  <h2>In this section</h2>
+  <ul>
+    <li><a href="/{{ currentSection }}/" {% if page.url == "/" + currentSection + "/" %}aria-current="page"{% endif %}>Overview</a></li>
+    {% for s in siblings %}
+      {% if s.url != "/" + currentSection + "/" %}
+        <li><a href="{{ s.url }}" {% if s.url == page.url %}aria-current="page"{% endif %}>{{ s.data.title }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  <h2>Explore</h2>
+  <ul>
+    {% for s in site.sections %}
+      {% if s.slug != currentSection %}
+        <li><a href="/{{ s.slug }}/">{{ s.title }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</aside>

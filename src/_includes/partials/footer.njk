@@ -1,0 +1,27 @@
+{% set year = page.date | default("now") %}
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-brand">
+      <strong>{{ site.title }}</strong>
+      <p>{{ site.description }}</p>
+    </div>
+    {% for s in site.sections %}
+      {% set children = collections.bySection[s.slug] or [] %}
+      <div class="footer-col">
+        <h3>{{ s.title }}</h3>
+        <ul>
+          <li><a href="/{{ s.slug }}/">Overview</a></li>
+          {% for child in children %}
+            {% if child.url != "/" + s.slug + "/" %}
+              <li><a href="{{ child.url }}">{{ child.data.title }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="container footer-meta">
+    <p>&copy; <span id="footer-year"></span> provenance-tracking.com — Geospatial Data Lineage & Provenance Tracking</p>
+  </div>
+</footer>
+<script>document.getElementById("footer-year").textContent=new Date().getFullYear();</script>
